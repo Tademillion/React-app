@@ -1,0 +1,64 @@
+{
+  "users": [
+    {
+      "Name": "Lindsay Walton",
+      "Title": "Front-end Developer",
+      "Email": "lindsay.walton@example.com",
+      "Role": "Member"
+    },
+    {
+      "Name": "Courtney Henry",
+      "Title": "Designer",
+      "Email": "courtney.henry@example.com",
+      "Role": "Admin"
+    },
+    {
+      "Name": "Tom Cook",
+      "Title": "Director of Product",
+      "Email": "tom.cook@example.com",
+      "Role": "Member"
+    },
+    {
+      "Name": "Whitney Francis",
+      "Title": "Copywriter",
+      "Email": "whitney.francis@example.com",
+      "Role": "Admin"
+    },
+    {
+      "Name": "Leonard Krasner",
+      "Title": "Senior Designer",
+      "Email": "leonard.krasner@example.com",
+      "Role": "Owner"
+    },
+    {
+      "Name": "Floyd Miles",
+      "Title": "Principal Designer",
+      "Email": "floyd.miles@example.com",
+      "Role": "Member"
+    },
+    {
+      "Name": "Emily Carter",
+      "Title": "Marketing Manager",
+      "Email": "emily.carter@example.com",
+      "Role": "Editor"
+    },
+    {
+      "Name": "Jackson Harris",
+      "Title": "Software Engineer",
+      "Email": "jackson.harris@example.com",
+      "Role": "Developer"
+    },
+    {
+      "Name": "Olivia Martin",
+      "Title": "UX Researcher",
+      "Email": "olivia.martin@example.com",
+      "Role": "Viewer"
+    },
+    {
+      "Name": "William Adams",
+      "Title": "Data Analyst",
+      "Email": "william.adams@example.com",
+      "Role": "Admin"
+    }
+  ]
+}
