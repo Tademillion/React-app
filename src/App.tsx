@@ -1,6 +1,4 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 
 function App() {
@@ -8,7 +6,9 @@ function App() {
 
   return (
     <>
-      <h1>hello world</h1>
+      <div className="bg-light text-black p-4 rounded-md shadow-sm hover:bg-blue-700">
+        This is a styled div.
+      </div>
     </>
   );
 }
