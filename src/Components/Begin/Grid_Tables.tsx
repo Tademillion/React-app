@@ -9,16 +9,12 @@ interface UserProps {
 const Grid_Tables = () => {
   const [user, setUser] = useState<UserProps[]>([]);
   const [isopen, setIsOpen] = useState(false);
-  const [addUsers, SetAddusers] = useState<UserProps>({
+  const [addUsers, SetAddusers] = useState({
     Name: "",
     Title: "",
     Email: "",
     Role: "",
   });
-
-  const addEmptyUser = () => {
-    setUser([{ Name: "", Title: "", Email: "", Role: "" }, ...user]);
-  };
   useEffect(() => {
     setUser(users.users);
   }, []);
@@ -127,7 +123,16 @@ const Grid_Tables = () => {
                           Email: users.Email,
                           Title: users.Title,
                           Role: users.Role,
+                          //  R: "", we can do like this
                         }));
+                        // SetAddusers({
+                        //   ...user,
+                        //   Name: users.Name,
+                        //   Email: users.Email,
+                        //   Title: users.Title,
+                        //   Role: users.Role,
+                        //   //r: "", // only existing values
+                        // });
                         setIsOpen(true);
                       }}
                     >
@@ -142,11 +147,6 @@ const Grid_Tables = () => {
         </div>
       </div>
       {isopen && (
-        // <div
-        //   className={`bg-white shadow rounded-lg p-6 w-full max-w-4xl mx-auto transition-all duration-300 ease-out ${
-        //     isopen ? "opacity-100 scale-100" : "opacity-0 scale-95"
-        //   } fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10`}
-        // >
         <div
           className={`
     bg-white shadow rounded-lg p-6 w-full max-w-4xl mx-auto
@@ -242,7 +242,7 @@ const Grid_Tables = () => {
               <select
                 id="role"
                 value={addUsers.Role}
-                className="mt-1 block w-full  border-gray-300 outline-none  border-1 p-3 rounded-sm   focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                className="mt-1 block w-full border-gray-300 outline-none border-1 p-3 rounded-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 onChange={(e) => {
                   SetAddusers((prev) => ({
                     ...prev,
@@ -250,10 +250,13 @@ const Grid_Tables = () => {
                   }));
                 }}
               >
-                <option>Admin</option>
-                <option>Member</option>
-                <option>Editor</option>
-                <option>Viewer</option>
+                <option value="" disabled>
+                  Select Role
+                </option>
+                <option value="Admin">Admin</option>
+                <option value="Member">Member</option>
+                <option value="Editor">Editor</option>
+                <option value="Viewer">Viewer</option>
               </select>
             </div>
             <div className="flex justify-center">
@@ -267,11 +270,12 @@ const Grid_Tables = () => {
                 Cancel
               </button>
               <button
-                type="submit"
+                type="button"
                 className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 onClick={() => {
                   setUser([...user, { ...addUsers }]);
                   setIsOpen(false);
+                  // console.log(addUsers);
                 }}
               >
                 Save
