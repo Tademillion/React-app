@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import users from "../Begin/constant/users.json";
-interface UserProps {
+export interface UserProps {
   Name: string;
   Title: string;
   Email: string;
   Role: string;
+}
+interface Users {
+  userprops: UserProps[];
 }
 const Grid_Tables = () => {
   const [user, setUser] = useState<UserProps[]>([]);
@@ -123,16 +126,9 @@ const Grid_Tables = () => {
                           Email: users.Email,
                           Title: users.Title,
                           Role: users.Role,
-                          //  R: "", we can do like this
+                          //  R: "", we can do like this because it points to new array
                         }));
-                        // SetAddusers({
-                        //   ...user,
-                        //   Name: users.Name,
-                        //   Email: users.Email,
-                        //   Title: users.Title,
-                        //   Role: users.Role,
-                        //   //r: "", // only existing values
-                        // });
+
                         setIsOpen(true);
                       }}
                     >
@@ -277,12 +273,11 @@ const Grid_Tables = () => {
                     const existingUserIndex = prevUser.findIndex(
                       (u) => u.Email === addUsers.Email
                     );
-                    console.log(existingUserIndex);
-
                     if (existingUserIndex > -1) {
                       return prevUser.map(
                         (u, index) =>
                           //  usermap is iterate over all array objects
+                          //  we must use map to update the content of arrays unless it will  add new array objects
                           index === existingUserIndex
                             ? { ...u, ...addUsers }
                             : u
@@ -291,10 +286,10 @@ const Grid_Tables = () => {
                       );
                     } else {
                       return [...prevUser, addUsers];
+                      //  immutale  ways because it create new array and points to it
                     }
                   });
                   setIsOpen(false);
-                  // console.log(addUsers);
                 }}
               >
                 Save
