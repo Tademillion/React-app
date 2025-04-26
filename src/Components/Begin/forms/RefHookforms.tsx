@@ -1,4 +1,5 @@
 import { FormEvent, useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 function RefHookforms() {
   const emailRef = useRef<HTMLInputElement>(null);
@@ -172,6 +173,7 @@ function RefHookforms() {
       >
         Submit
       </button>
+      <Link to={"/form3"}>Form 3</Link>
     </form>
   );
 }

@@ -1,16 +1,20 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, use, useState } from "react";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
 function FoprmsWithUseForm() {
   //  use state to take the values of the inputs
 
   //  reactr form submission in 3rd step called form submission with  useform
-  const user = useForm();
-  //     to use we have to install react hook form
+  const { register, handleSubmit } = useForm();
+  console.log(register);
+  //     to use we have to install react hook form npm i react-hook-form
 
   return (
     <form className="max-w-md mx-auto mt-40">
-      <h2 className="text-black align-ceter">state Hook forms</h2>
+      <h2 className="text-black align-ceter">
+        treact form submission using react hook -forms
+      </h2>
       <div className="relative z-0 w-full mb-5 group">
         <input
           type="email"
@@ -30,6 +34,7 @@ function FoprmsWithUseForm() {
       <div className="relative z-0 w-full mb-5 group">
         <input
           type="password"
+          {...register("password")}
           name="floating_password"
           id="floating_password"
           className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
@@ -46,6 +51,7 @@ function FoprmsWithUseForm() {
       <div className="relative z-0 w-full mb-5 group">
         <input
           type="password"
+          {...register("confirmassword")}
           name="repeat_password"
           id="floating_repeat_password"
           className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
@@ -63,7 +69,7 @@ function FoprmsWithUseForm() {
         <div className="relative z-0 w-full mb-5 group">
           <input
             type="text"
-            name="floating_first_name"
+            {...register("firstName")}
             id="floating_first_name"
             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder=" "

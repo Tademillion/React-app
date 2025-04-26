@@ -182,7 +182,7 @@ const Grid_Tables = () => {
                 required
                 onChange={(e) => {
                   SetAddusers((prev) => ({
-                    ...prev,
+                    ...prev, // this add
                     Name: e.target.value,
                   }));
                 }}
@@ -273,7 +273,26 @@ const Grid_Tables = () => {
                 type="button"
                 className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 onClick={() => {
-                  setUser([...user, { ...addUsers }]);
+                  setUser((prevUser) => {
+                    const existingUserIndex = prevUser.findIndex(
+                      (u) => u.Email === addUsers.Email
+                    );
+                    console.log(existingUserIndex);
+
+                    if (existingUserIndex > -1) {
+                      return prevUser.map(
+                        (u, index) =>
+                          //  usermap is iterate over all array objects
+                          index === existingUserIndex
+                            ? { ...u, ...addUsers }
+                            : u
+                        // index === existingUserIndex ? { ...u, Email:"tadde milllionyou@gmail.com" } : u // update only some properties
+                        //  we can use immer to update the state as well as
+                      );
+                    } else {
+                      return [...prevUser, addUsers];
+                    }
+                  });
                   setIsOpen(false);
                   // console.log(addUsers);
                 }}
