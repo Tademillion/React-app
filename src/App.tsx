@@ -8,10 +8,10 @@ import products from "./Components/Begin/constant/Products.json";
 import Products, { Productstruct } from "./Components/Begin/constant/Products";
 
 function App() {
+  const [product, SetProduct] = useState(products.products);
   const HandleClick = (p: Productstruct) => {
     SetProduct(product.filter((product) => product.id !== p.id));
   };
-  const [product, SetProduct] = useState(products.products);
   return (
     <>
       {/*   now transfer data from gridtables to app compnents and count the number of the users */}

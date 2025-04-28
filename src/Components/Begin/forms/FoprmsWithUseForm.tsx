@@ -1,19 +1,30 @@
 import { FormEvent, use, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-
+import { UserProps } from "../Grid_Tables";
+interface props {
+  Name: string;
+  password: string;
+  Email: string;
+  confirmassword: string;
+  firstName: string;
+}
 function FoprmsWithUseForm() {
   //  use state to take the values of the inputs
 
   //  reactr form submission in 3rd step called form submission with  useform
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }, // to get errors
+  } = useForm<props>();
   console.log(register);
   //     to use we have to install react hook form npm i react-hook-form
 
   return (
     <form className="max-w-md mx-auto mt-40">
       <h2 className="text-black align-ceter">
-        treact form submission using react hook -forms
+        treact form submission using react use -forms
       </h2>
       <div className="relative z-0 w-full mb-5 group">
         <input
@@ -34,13 +45,20 @@ function FoprmsWithUseForm() {
       <div className="relative z-0 w-full mb-5 group">
         <input
           type="password"
-          {...register("password")}
-          name="floating_password"
+          {...(register("password"),
+          {
+            required: true,
+
+            minLength: 2,
+            maxLength: 10,
+          })}
           id="floating_password"
           className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
           placeholder=" "
-          required
         />
+        {errors.password?.type === "required" && (
+          <p> the password is required</p>
+        )}
         <label
           htmlFor="floating_password"
           className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"

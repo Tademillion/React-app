@@ -1,5 +1,6 @@
 import { FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
+import { preview } from "vite";
 
 function StateHookForms() {
   //  use state to take the values of the inputs
