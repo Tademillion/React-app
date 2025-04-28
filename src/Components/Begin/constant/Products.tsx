@@ -63,6 +63,13 @@ const Products = ({ product, onclickhandle }: ProductProps) => {
               </li>
             ))}
           </ul>
+          <div className="container mx-auto max-w-3xl bg-white shadow-md rounded-md overflow-hidden  ">
+            {" "}
+            Total Number Of Products{" "}
+            <span className="inline-block bg-red-200 text-red-800 text-xs px-2 py-1 rounded-full">
+              {product.length}
+            </span>
+          </div>
         </div>
       </div>
     </div>

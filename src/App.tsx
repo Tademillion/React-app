@@ -15,13 +15,16 @@ function App() {
   return (
     <>
       {/*   now transfer data from gridtables to app compnents and count the number of the users */}
-
       <div className="bg-light text-black p-4 rounded-md shadow-sm hover:bg-gray-200">
-        <Link to={"/forms"}>Forms</Link>
-        <Link to={"/products"}> Products</Link>
+        <Link to={"/forms"} className="mr-7">
+          Forms
+        </Link>
+        <Link to={"/products"} className="ml-6 text-success">
+          {" "}
+          Products
+        </Link>
       </div>
       <Grid_Tables />
-
       <CountUsers users={users.users} />
       <Products product={product} onclickhandle={HandleClick}></Products>
     </>

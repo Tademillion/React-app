@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import users from "../Begin/constant/users.json";
 export interface UserProps {
   Name: string;
@@ -18,6 +18,8 @@ const Grid_Tables = () => {
     Email: "",
     Role: "",
   });
+  //  we can use
+
   useEffect(() => {
     setUser(users.users);
   }, []);
@@ -121,14 +123,14 @@ const Grid_Tables = () => {
                       className="text-indigo-600 hover:text-indigo-900"
                       onClick={() => {
                         SetAddusers((prev) => ({
-                          ...prev,
+                          ...addUsers,
                           Name: users.Name,
                           Email: users.Email,
                           Title: users.Title,
                           Role: users.Role,
+
                           //  R: "", we can do like this because it points to new array
                         }));
-
                         setIsOpen(true);
                       }}
                     >
@@ -273,6 +275,7 @@ const Grid_Tables = () => {
                     const existingUserIndex = prevUser.findIndex(
                       (u) => u.Email === addUsers.Email
                     );
+                    // 4
                     if (existingUserIndex > -1) {
                       return prevUser.map(
                         (u, index) =>
